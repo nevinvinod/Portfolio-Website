@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Nevin Vinod Portfolio</title>
+<style>
+  /* Reset and basics */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0a0a0a;
+    color: #d1d1d1;
+    line-height: 1.6;
+  }
+  a {
+    color: #1e90ff;
+    text-decoration: none;
+  }
+  a:hover, a:focus {
+    text-decoration: underline;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  button {
+    cursor: pointer;
+  }
+
+  /* Container */
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+  }
+
+  /* Header */
+  header {
+    background-color: #0a0a0a;
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header .logo {
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #2771ff;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  header .logo svg path {
+    fill: #2771ff;
+  }
+  header nav {
+    display: flex;
+    gap: 1.5rem;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+  header nav a {
+    color: #d1d1d1;
+    transition: color 0.2s ease-in-out;
+  }
+  header nav a:hover,
+  header nav a:focus {
+    color: #2771ff;
+  }
+  header .cta-btn {
+    background: #2771ff;
+    border: none;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    font-weight: 700;
+    border-radius: 20px;
+    transition: background 0.3s ease;
+  }
+  header .cta-btn:hover,
+  header .cta-btn:focus {
+    background: #1957d4;
+  }
+
+  /* Hero */
+  section.hero {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hero-text {
+    flex: 1 1 320px;
+    max-width: 600px;
+  }
+  .hero-text h1 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: #d1d1d1;
+    margin-bottom: 0.3rem;
+    line-height: 1.1;
+  }
+  .hero-text h1 .highlight {
+    color: #2771ff;
+  }
+  .hero-text p.lead {
+    margin-bottom: 1.5rem;
+    color: #ccc;
+  }
+  .hero-text .btn-group {
+    display: flex;
+    gap: 1rem;
+  }
+  .btn-primary {
+    background-color: #2771ff;
+    border: none;
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 700;
+    color: white;
+    transition: background 0.3s ease;
+  }
+  .btn-primary:hover,
+  .btn-primary:focus {
+    background-color: #1957d4;
+  }
+  .btn-secondary {
+    background: none;
+    border: 2px solid #2771ff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 20px;
+    font-weight: 700;
+    color: #2771ff;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .btn-secondary svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 2;
+  }
+  .btn-secondary:hover,
+  .btn-secondary:focus {
+    background-color: #2771ff;
+    color: white;
+  }
+
+  /* Hero image */
+  .hero-image-wrapper {
+    flex: 1 1 280px;
+    max-width: 320px;
+    background: #151515;
+    border-radius: 9999px;
+    border: 3px solid #2771ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem;
+    box-shadow: 0 0 20px #2771ff44;
+  }
+  .hero-image-wrapper img {
+    border-radius: 9999px;
+    max-width: 260px;
+    filter: grayscale(10%);
+  }
+  /* Small decorative shapes */
+  .shape {
+    position: absolute;
+    border-radius: 50%;
+    background: #2771ff;
+    opacity: 0.3;
+    mix-blend-mode: screen;
+  }
+  .shape.small {
+    width: 10px;
+    height: 10px;
+  }
+  .shape.medium {
+    width: 25px;
+    height: 25px;
+  }
+  .shape.large {
+    width: 45px;
+    height: 45px;
+  }
+
+  /* Section titles */
+  h2.section-title {
+    text-align: center;
+    margin: 3rem 0 1rem;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #2771ff;
+  }
+  h3.section-subtitle {
+    text-align: center;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    color: #999;
+  }
+
+  /* About me */
+  section.about {
+    background-color: #121212;
+    padding: 4rem 1rem 3rem;
+  }
+  .about p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+    color: #ccc;
+    line-height: 1.75;
+  }
+  .about p .highlight {
+    color: #2771ff;
+    font-weight: 600;
+  }
+
+  /* Skills grid */
+  .skills {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0 5rem;
+    flex-wrap: wrap;
+  }
+  .skill-box {
+    background: #181818;
+    border: 1px solid #2771ff;
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+    width: 250px;
+    flex-shrink: 0;
+    text-align: center;
+    transition: background 0.3s ease;
+  }
+  .skill-box:hover,
+  .skill-box:focus-within {
+    background: #2771ff;
+    color: #fff;
+    border-color: #1a52db;
+  }
+  .skill-box svg {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 1rem;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+  }
+  .skill-box h4 {
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+  .skill-box p {
+    font-size: 0.9rem;
+    color: inherit;
+    line-height: 1.5;
+  }
+
+  /* Education journey (diamond layout) */
+  .education {
+    max-width: 900px;
+    margin: 0 auto 5rem;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+  .education .diamond-item {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: none;
+    color: #2771ff;
+    font-weight: 700;
+    font-size: 0.8rem;
+    border: 1px solid #2771ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: rotate(45deg);
+    cursor: default;
+  }
+  .education .diamond-item span {
+    transform: rotate(-45deg);
+    display: block;
+    padding: 0 10px;
+  }
+  .education .diamond-item.tech {
+    color: #cd3f3f;
+    border-color: #cd3f3f;
+  }
+  .education .diamond-item.design {
+    color: #7e3fcd;
+    border-color: #7e3fcd;
+  }
+  .education .diamond-item.experience {
+    color: #32cd99;
+    border-color: #32cd99;
+  }
+  .education .diamond-item.cybersecurity {
+    color: #39b6e2;
+    border-color: #39b6e2;
+  }
+
+  /* Projects grid */
+  section.projects {
+    background: #121212;
+    padding: 4rem 1rem 5rem;
+  }
+  .projects-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .project-card {
+    background: #181818;
+    border: 1px solid #2771ff;
+    padding: 1.5rem 1rem 2rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background 0.3s ease;
+  }
+  .project-card:hover,
+  .project-card:focus-within {
+    background: #2771ff;
+    color: white;
+    border-color: #1a52db;
+  }
+  .project-card h4 {
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  .project-card p {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    color: inherit;
+    margin-bottom: 1.2rem;
+    min-height: 65px;
+    line-height: 1.4;
+  }
+  .btn-project {
+    align-self: flex-start;
+    background: none;
+    border: 2px solid #2771ff;
+    color: #2771ff;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-weight: 700;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+  .btn-project:hover,
+  .btn-project:focus {
+    background: #1957d4;
+    border-color: #1957d4;
+    color: white;
+  }
+
+  /* Certifications grid */
+  section.certifications {
+    background: #0a0a0a;
+    padding: 4rem 1rem 2rem;
+  }
+  .certificates-gallery {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  .certificates-gallery img {
+    height: 160px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: transform 0.3s ease;
+  }
+  .certificates-gallery img:hover {
+    transform: scale(1.05);
+    border-color: #2771ff;
+  }
+
+  /* Designs grid */
+  section.designs {
+    background: #121212;
+    padding: 4rem 1rem 5rem;
+  }
+  .designs-gallery {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+  }
+  .designs-gallery img {
+    height: 160px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    transition: transform 0.3s ease;
+  }
+  .designs-gallery img:hover {
+    transform: scale(1.05);
+    border-color: #2771ff;
+  }
+
+  /* Contact section */
+  section.contact {
+    background: #181818;
+    padding: 3rem 1rem 3rem;
+    text-align: center;
+  }
+  section.contact h2 {
+    color: #2771ff;
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  section.contact button {
+    background: linear-gradient(90deg, #5a41d1, #9333ea);
+    border: none;
+    color: white;
+    padding: 0.75rem 2rem;
+    font-weight: 700;
+    border-radius: 9999px;
+    font-size: 1.1rem;
+    transition: background 0.3s ease;
+  }
+  section.contact button:hover,
+  section.contact button:focus {
+    background: linear-gradient(90deg, #3f2a9f, #5a1aaf);
+  }
+  
+  /* Footer */
+  footer {
+    background: #0a0a0a;
+    color: #666;
+    padding: 2rem 1rem 2rem;
+    font-size: 0.9rem;
+  }
+  .footer-container {
+    max-width: 1100px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .footer-logo {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #2771ff;
+    gap: 6px;
+  }
+  .footer-logo svg path {
+    fill: #2771ff;
+  }
+  .footer-contact, .footer-quick-links {
+    min-width: 200px;
+  }
+  .footer-contact p, .footer-contact a {
+    margin-bottom: 0.5rem;
+    color: #999;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .footer-contact a {
+    text-decoration: none;
+    color: #999;
+  }
+  .footer-contact a:hover,
+  .footer-contact a:focus {
+    color: #2771ff;
+  }
+  .footer-quick-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-quick-links li + li {
+    margin-top: 0.5rem;
+  }
+  .footer-quick-links a {
+    color: #999;
+  }
+  .footer-quick-links a:hover,
+  .footer-quick-links a:focus {
+    color: #2771ff;
+  }
+  .footer-bottom {
+    margin-top: 2rem;
+    text-align: center;
+    color: #444;
+  }
+  
+  /* Icons */
+  svg.icon {
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+  
+  /* Utility */
+  .hidden {
+    display: none;
+  }
+
+  /* Responsive */
+  @media (max-width: 850px) {
+    section.hero {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .hero-text, .hero-image-wrapper {
+      max-width: 100%;
+      flex: none;
+    }
+    .skills {
+      flex-direction: column;
+      align-items: center;
+    }
+    .education {
+      justify-content: center;
+    }
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .certificates-gallery, .designs-gallery {
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scroll-snap-type: x mandatory;
+    }
+    .certificates-gallery img, .designs-gallery img {
+      scroll-snap-align: center;
+    }
+    .footer-container {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="container" role="banner">
+  <a href="#" class="logo" aria-label="Nevin Vinod Home">
+    <!-- Logo as 'n' letter -->
+    <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+      <path d="M6 26V6l12 20V6" stroke="#2771ff" stroke-width="4" fill="none" />
+    </svg>
+    Nevin Vinod
+  </a>
+  <nav role="navigation" aria-label="Primary navigation">
+    <a href="#about" tabindex="0">About</a>
+    <a href="#projects" tabindex="0">Projects</a>
+    <a href="#resume" tabindex="0">Resume</a>
+    <a href="#contact" tabindex="0" class="cta-btn">Contact Me</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Hero Section -->
+  <section class="hero container" role="region" aria-label="Introduction">
+    <div class="hero-text">
+      <h1>Welcome to my Portfolio<br />I'm <span class="highlight">Nevin Vinod</span></h1>
+      <p class="lead">A tech enthusiast and creative designer.<br/>
+        With a background in electronics and a passion for visual design, I blend logic and aesthetics into everything I do. I have mastered systems to brand identities. I love building things that work and look great.
+      </p>
+      <div class="btn-group">
+        <a href="#contact" class="btn-primary" role="button" tabindex="0">Contact Me</a>
+        <a href="NevinVinod_Resume.pdf" target="_blank" rel="noopener" class="btn-secondary" role="button" tabindex="0">
+          Resume
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-image-wrapper" aria-label="Portrait photo of Nevin Vinod">
+      <img src="https://i.ibb.co/nKYym0r/profile-pic.png" alt="Portrait of Nevin Vinod" />
+    </div>
+  </section>
+
+  <!-- Who am I / About -->
+  <section id="about" class="about">
+    <h2 class="section-title">Who am I</h2>
+    <h3 class="section-subtitle">About <span class="highlight">me</span></h3>
+    <p>I'm a final-year Electronics & Communication Engineering student with a passion for both tech and design. From building Arduino-based robotics to designing brand identities in Photoshop, I thrive at the intersection of creativity and logic. I'm currently exploring embedded systems, web development, and cybersecurity.</p>
+
+    <div class="skills" aria-label="Skills and expertise">
+      <article class="skill-box" tabindex="0" aria-labelledby="skill1-title" aria-describedby="skill1-desc">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="4" y="4" width="8" height="8" stroke="currentColor" fill="none"/><rect x="12" y="12" width="8" height="8" stroke="currentColor" fill="none"/></svg>
+        <h4 id="skill1-title">Embedded Electronics</h4>
+        <p id="skill1-desc">Work with embedded systems using C, microcontrollers & real-time RTOS architectures, building user hardware and software from the ground up.</p>
+      </article>
+      <article class="skill-box" tabindex="0" aria-labelledby="skill2-title" aria-describedby="skill2-desc">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" stroke="currentColor" fill="none"/><path d="M6 12h12" stroke="currentColor"/></svg>
+        <h4 id="skill2-title">Graphics Design</h4>
+        <p id="skill2-desc">Creating visually compelling content using Photoshop & Illustrator, and concepts blended to express a message and design with purpose.</p>
+      </article>
+      <article class="skill-box" tabindex="0" aria-labelledby="skill3-title" aria-describedby="skill3-desc">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M16 3.13a4 4 0 1 1-8 0" stroke="currentColor"/><path d="M3 16v3a4 4 0 0 0 4 4h10a4 4 0 0 0 4-4v-3" stroke="currentColor"/></svg>
+        <h4 id="skill3-title">Cybersecurity</h4>
+        <p id="skill3-desc">Designing smart attacks and ethical cybersecurity with tools like Kali Linux, Wireshark and wireless sniffing for network and data protection technology.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- Education Journey -->
+  <section class="education container" aria-label="Education journey and achievements" style="margin-bottom: 5rem;">
+    <h2 class="section-title">About me</h2>
+    <h3 class="section-subtitle">My <span class="highlight">education journey</span></h3>
+    <p style="text-align:center; max-width: 550px; margin: 0 auto 2rem; color: #ccc; font-weight: 500; font-size:1rem;">
+      From the pursuit of engineering to creative writing and in pursuit of becoming an expert in cybersecurity
+    </p>
+    <div class="education">
+      <div class="diamond-item" role="group" aria-label="B.Tech in Electronics and Communication">
+        <span>B.Tech in Electronics & Communication</span>
+      </div>
+      <div class="diamond-item design" role="group" aria-label="Embedded System Professional Course">
+        <span>Embedded System Professional Course</span>
+      </div>
+      <div class="diamond-item experience" role="group" aria-label="4+ Year of Experience in Graphics Design">
+        <span>4+ Year of Experience in Graphics Design</span>
+      </div>
+      <div class="diamond-item cybersecurity" role="group" aria-label="Active Cybersecurity Enthusiast">
+        <span>Active Cybersecurity Enthusiast</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="projects" role="region" aria-label="Projects portfolio">
+    <div class="container">
+      <h2 class="section-title">Projects</h2>
+      <h3 class="section-subtitle">My <span class="highlight">projects</span></h3>
+      <p style="text-align:center; max-width: 800px; margin: 0 auto 2rem; color: #ccc; font-weight: 500;">
+        Showcasing my projects in various fields like Embedded C, C++, Linux and Microcontrollers, Cybersecurity and Python.
+      </p>
+      <div class="projects-grid">
+
+        <article class="project-card" tabindex="0" aria-labelledby="project1-title" aria-describedby="project1-desc">
+          <h4 id="project1-title">Medicine Dispenser System</h4>
+          <p id="project1-desc">Automated system to manage and dispense medicine on schedules times, integrating sensors, controlled dosage and timing, including human error in medication management. Technologies: Embedded C, Atmega, Sensors.</p>
+          <a href="#" class="btn-project" role="button">Discuss for projects →</a>
+        </article>
+
+        <article class="project-card" tabindex="0" aria-labelledby="project2-title" aria-describedby="project2-desc">
+          <h4 id="project2-title">Floating-Point ALU IC Design</h4>
+          <p id="project2-desc">Designed a 64-bit arithmetic logic unit arithmetic logic unit with 6 pipelining units and advanced high performance arithmetic operation for advanced architectures. Technologies: VHDL, Vivado, TCG, Worked Design.</p>
+          <a href="#" class="btn-project" role="button">Discuss for projects →</a>
+        </article>
+
+        <article class="project-card" tabindex="0" aria-labelledby="project3-title" aria-describedby="project3-desc">
+          <h4 id="project3-title">Address Book</h4>
+          <p id="project3-desc">A digital address management system to store, update, and search addresses with interface features writing user details sorted fields, treating and getting this stored multiple users.</p>
+          <a href="#" class="btn-project" role="button">Discuss for projects →</a>
+        </article>
+
+        <article class="project-card" tabindex="0" aria-labelledby="project4-title" aria-describedby="project4-desc">
+          <h4 id="project4-title">Gesture Controlled System</h4>
+          <p id="project4-desc">Interactive system that recognizes hand gestures to control devices or perform actions using AI, learning gestures and microcontroller to real-time response. Technologies: Arduino Sensors, Embedded C.</p>
+          <a href="#" class="btn-project" role="button">Discuss for projects →</a>
+        </article>
+
+        <article class="project-card" tabindex="0" aria-labelledby="project5-title" aria-describedby="project5-desc">
+          <h4 id="project5-title">Password Safety Tester</h4>
+          <p id="project5-desc">A fully automated password strength control and recovery, login and security tool. Uses advanced algorithms to detect passwords. Technologies: Python, Tkinter, Algorithm Design.</p>
+          <a href="#" class="btn-project" role="button">Discuss for projects →</a>
+        </article>
+
+        <article class="project-card" tabindex="0" aria-labelledby="project6-title" aria-describedby="project6-desc">
+          <h4 id="project6-title">ADAS System</h4>
+          <p id="project6-desc">Advanced Driver Assistance System program for enhancing vehicle safety, using sensors, processing vehicles data for recognition, and alert mechanism. Technologies: Distributed Control, Microcontrollers.</p>
+          <a href="#" class="btn-project" role="button">Discuss for projects →</a>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section class="certifications" role="region" aria-label="Certifications">
+    <div class="container">
+      <h2 class="section-title">Certifications</h2>
+      <h3 class="section-subtitle">My <span class="highlight">certifications</span></h3>
+      <p style="text-align:center; max-width: 800px; margin: 0 auto 2rem; color: #ccc; font-weight: 500;">
+        Certified courses with programs in Electronics, Cybersecurity and Designing.
+      </p>
+      <div class="certificates-gallery" aria-label="Certification images" role="list">
+        <img src="https://i.ibb.co/Trr37XJ/certificate-project.jpg" alt="Project Certificate 1" role="listitem" />
+        <img src="https://i.ibb.co/d7MxG5J/certificate-nevin-vinod.jpg" alt="Certificate - Nevin Vinod" role="listitem" />
+        <img src="https://i.ibb.co/0jYzw52/certificate-badge.png" alt="Certificate of Achievement" role="listitem" />
+        <img src="https://i.ibb.co/HnSJF53/certificate-course-completion.jpg" alt="Certificate of Course Completion" role="listitem" />
+        <img src="https://i.ibb.co/28qBtBc/certificate-programming.jpg" alt="Certificate of Programming" role="listitem" />
+        <img src="https://i.ibb.co/4mMr60b/certificate-nasa.jpg" alt="Certificate NASA" role="listitem" />
+        <img src="https://i.ibb.co/Jd5TP8z/certificate-google.jpg" alt="Google Certification" role="listitem" />
+        <img src="https://i.ibb.co/VN9d8hZ/certificate-python.jpg" alt="Python Certification" role="listitem" />
+        <img src="https://i.ibb.co/Y3B6f7p/certificate-cisco.jpg" alt="Cisco Verified Certificate" role="listitem" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Designs Section -->
+  <section class="designs" role="region" aria-label="Design samples">
+    <div class="container">
+      <h2 class="section-title">Designs</h2>
+      <h3 class="section-subtitle">My <span class="highlight">designs</span></h3>
+      <p style="text-align:center; max-width: 800px; margin: 0 auto 2rem; color: #ccc; font-weight: 500;">
+        Showcasing from Designing from Phone to PC
+      </p>
+      <div class="designs-gallery" aria-label="Design images" role="list">
+        <img src="https://i.ibb.co/ZJfJvDN/design1.jpg" alt="Design Sample 1" role="listitem" />
+        <img src="https://i.ibb.co/gF5BNBk/design2.jpg" alt="Design Sample 2" role="listitem" />
+        <img src="https://i.ibb.co/BXY0NhR/design3.jpg" alt="Design Sample 3" role="listitem" />
+        <img src="https://i.ibb.co/TMPtxVt/design4.jpg" alt="Design Sample 4" role="listitem" />
+        <img src="https://i.ibb.co/YWfcgSK/design5.jpg" alt="Design Sample 5" role="listitem" />
+        <img src="https://i.ibb.co/QJj5yGS/design6.jpg" alt="Design Sample 6" role="listitem" />
+        <img src="https://i.ibb.co/P9TxZbJ/design7.jpg" alt="Design Sample 7" role="listitem" />
+        <img src="https://i.ibb.co/vx3M2XM/design8.jpg" alt="Design Sample 8" role="listitem" />
+        <img src="https://i.ibb.co/LR0Ttj0/design9.jpg" alt="Design Sample 9" role="listitem" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact" role="form" aria-labelledby="contact-title">
+    <h2 id="contact-title">Contact Me</h2>
+    <button onclick="window.location.href='mailto:nevinvinod2023@gmail.com'" aria-label="Send email to Nevin Vinod">Contact Now</button>
+  </section>
+
+</main>
+
+<footer role="contentinfo">
+  <div class="footer-container container" >
+    <div class="footer-logo" aria-label="Nevin Vinod Logo">
+      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <path d="M6 26V6l12 20V6" stroke="#2771ff" stroke-width="4" fill="none" />
+      </svg>
+      Nevin Vinod
+    </div>
+    <div class="footer-contact">
+      <p><strong>Contacts</strong></p>
+      <p><svg class="icon" width="18" height="18" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.9 19.9 0 0 1-8.63-3.07"/></svg> +91 97025 72075</p>
+      <p><svg class="icon" width="18" height="18" viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/></svg> nevinvinod2023@gmail.com</p>
+      <p><svg class="icon" width="18" height="18" viewBox="0 0 24 24"><path d="M3 12l18 0"/></svg> Kerala, India</p>
+    </div>
+    <div class="footer-quick-links" aria-label="Quick links">
+      <p><strong>Quick link</strong></p>
+      <ul>
+        <li><a href="#about" tabindex="0">About</a></li>
+        <li><a href="#projects" tabindex="0">Projects</a></li>
+        <li><a href="#resume" tabindex="0">Resume</a></li>
+        <li><a href="#contact" tabindex="0">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    Copyright © 2023 | All Rights Reserved
+  </div>
+</footer>
+
+</body>
+</html>
