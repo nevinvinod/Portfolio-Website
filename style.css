@@ -1763,7 +1763,7 @@ body.dark-mode {
   background: #111;
   color: #fff;
   padding: 20px 100px;
-  font-family: 'Segoe UI', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -2653,4 +2653,5 @@ body.dark-mode {
   }
 
 }
+
 
