@@ -233,6 +233,7 @@ strong {
 body {
   background-color: #000;
   overflow-x: hidden;
+  font-family: "Bricolage Grotesque", sans-serif;
 }
 
 * {
@@ -2652,3 +2653,4 @@ body.dark-mode {
   }
 
 }
+
