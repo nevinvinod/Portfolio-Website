@@ -38,20 +38,16 @@ certContainer.addEventListener("mouseleave", () => {
 // =====================
 // MY DESIGNS CAROUSEL
 // =====================
-const totalImages = 79; // images 1.jpg to 79.jpg
-const row1 = document.getElementById("row1");
-const row2 = document.getElementById("row2");
+const totalImages = 79;
+const rows = [document.getElementById("row1"), document.getElementById("row2")];
 
 for (let i = 1; i <= totalImages; i++) {
-  let img1 = document.createElement("img");
-  img1.src = `designimg/${i}.webp`;
-  img1.alt = `Design ${i}`;
-  row1.appendChild(img1);
-
-  let img2 = document.createElement("img");
-  img2.src = `designimg/${i}.webp`;
-  img2.alt = `Design ${i}`;
-  row2.appendChild(img2);
+  rows.forEach(row => {
+    const img = document.createElement("img");
+    img.src = `designimg/${i}.webp`;
+    img.alt = `Design ${i}`;
+    row.appendChild(img);
+  });
 }
 
 
@@ -140,6 +136,7 @@ toggleBtn.addEventListener('click', () => {
   // Toggle icon
   toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 });
+
 
 
 
