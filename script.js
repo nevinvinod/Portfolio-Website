@@ -44,12 +44,12 @@ const row2 = document.getElementById("row2");
 
 for (let i = 1; i <= totalImages; i++) {
   let img1 = document.createElement("img");
-  img1.src = `designimg/${i}.jpg`;
+  img1.src = `designimg/${i}.webp`;
   img1.alt = `Design ${i}`;
   row1.appendChild(img1);
 
   let img2 = document.createElement("img");
-  img2.src = `designimg/${i}.jpg`;
+  img2.src = `designimg/${i}.webp`;
   img2.alt = `Design ${i}`;
   row2.appendChild(img2);
 }
@@ -139,3 +139,4 @@ toggleBtn.addEventListener('click', () => {
   // Toggle icon
   toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 });
+
