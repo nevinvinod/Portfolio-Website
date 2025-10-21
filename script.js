@@ -38,42 +38,20 @@ certContainer.addEventListener("mouseleave", () => {
 // =====================
 // MY DESIGNS CAROUSEL
 // =====================
-const totalImages = 79;
-const rows = [document.getElementById("row1"), document.getElementById("row2")];
+const totalImages = 79; // images 1.jpg to 79.jpg
+const row1 = document.getElementById("row1");
+const row2 = document.getElementById("row2");
 
 for (let i = 1; i <= totalImages; i++) {
-  rows.forEach(row => {
-    const img = document.createElement("img");
-    img.src = `designimg/${i}.webp`;
-    img.alt = `Design ${i}`;
-    row.appendChild(img);
-  });
-}
+  let img1 = document.createElement("img");
+  img1.src = `designimg/${i}.webp`;
+  img1.alt = `Design ${i}`;
+  row1.appendChild(img1);
 
-
-// =====================
-// HEADER SHOW/HIDE BASED ON HERO
-// =====================
-window.addEventListener("scroll", toggleHeaderVisibility);
-window.addEventListener("load", toggleHeaderVisibility);
-
-function toggleHeaderVisibility() {
-  const header = document.querySelector("header");
-  const hero = document.querySelector(".hero");
-  if (!hero) return;
-
-  const heroBottom = hero.offsetHeight; // height of hero section
-
-  // Check how far you've scrolled
-  if (window.scrollY < heroBottom - 100) {
-    // Still in hero section
-    header.style.opacity = "1";
-    header.style.pointerEvents = "auto";
-  } else {
-    // Scrolled past hero
-    header.style.opacity = "0";
-    header.style.pointerEvents = "none";
-  }
+  let img2 = document.createElement("img");
+  img2.src = `designimg/${i}.webp`;
+  img2.alt = `Design ${i}`;
+  row2.appendChild(img2);
 }
 
 // =====================
@@ -119,23 +97,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateActiveDot();
 });
 
-
-
-// =====================
-// DARK & LIGHT THEME
-// =====================
-const toggleBtn = document.getElementById('mode-toggle');
-
-// Set default
-document.body.classList.add('dark-mode');
-
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('light-mode');
-  document.body.classList.toggle('dark-mode');
-
-  // Toggle icon
-  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-});
 
 
 
