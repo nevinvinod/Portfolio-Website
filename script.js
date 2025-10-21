@@ -38,36 +38,19 @@ certContainer.addEventListener("mouseleave", () => {
 // =====================
 // MY DESIGNS CAROUSEL
 // =====================
-const totalImages = 79;
+const totalImages = 79; // images 1.jpg to 79.jpg
 const row1 = document.getElementById("row1");
 const row2 = document.getElementById("row2");
 
-// Cloudinary base URL
-const baseUrl = "https://res.cloudinary.com/db7ossyw6/image/upload/";
-
-// Function to generate image URL
-function generateImageUrl(index) {
-  // Construct the public ID (assuming the pattern is 'index_randomString')
-  const publicId = `${index}_randomString`; // Replace 'randomString' with the actual pattern
-  return `${baseUrl}${publicId}.webp`;
-}
-
-// Loop to create and append images
 for (let i = 1; i <= totalImages; i++) {
-  const imgUrl = generateImageUrl(i);
-
-  // Create and append image to row1
   let img1 = document.createElement("img");
-  img1.src = imgUrl;
+  img1.src = `designimg/${i}.webp`;
   img1.alt = `Design ${i}`;
-  img1.loading = "lazy"; // Enable lazy loading
   row1.appendChild(img1);
 
-  // Create and append image to row2
   let img2 = document.createElement("img");
-  img2.src = imgUrl;
+  img2.src = `designimg/${i}.webp`;
   img2.alt = `Design ${i}`;
-  img2.loading = "lazy"; // Enable lazy loading
   row2.appendChild(img2);
 }
 
@@ -157,5 +140,6 @@ toggleBtn.addEventListener('click', () => {
   // Toggle icon
   toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
 });
+
 
 
