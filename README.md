@@ -7,7 +7,7 @@ A modern and responsive personal portfolio website built with **HTML**, **CSS**,
 ---
 
 ## 🚀 Live Preview  
-🔗 **[View Portfolio](https://nevinvinod.github.io/Portfolio-Website/)**  
+🔗 **https://nevinvinod.github.io/Portfolio-Website**  
 
 ---
 
